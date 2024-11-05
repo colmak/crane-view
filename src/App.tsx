@@ -26,6 +26,18 @@ function App() {
     <Canvas shadows>
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} castShadow />
+      <directionalLight
+        position={[5, 5, 5]}
+        intensity={1}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-far={50}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+      />
       <Box />
       <mesh receiveShadow position={[0, -3, 0]}>
         <planeGeometry args={[10, 10]} />
