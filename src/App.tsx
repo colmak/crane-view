@@ -14,7 +14,7 @@ function Box() {
   });
 
   return (
-    <mesh ref={mesh} position={[0, 0, 0]}>
+    <mesh ref={mesh} position={[0, 0, 0]} castShadow receiveShadow>
       <boxGeometry args={[3, 3, 3]} />
       <meshStandardMaterial color={'orange'} />
     </mesh>
@@ -23,10 +23,14 @@ function Box() {
 
 function App() {
   return (
-    <Canvas>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
+    <Canvas shadows>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} castShadow />
       <Box />
+      <mesh receiveShadow position={[0, -3, 0]}>
+        <planeGeometry args={[10, 10]} />
+        <shadowMaterial opacity={0.5} />
+      </mesh>
     </Canvas>
   );
 }
